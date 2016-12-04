@@ -8,11 +8,17 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'index.js'
+    filename: 'index.js',
+    library: 'react-dipper',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories:['node_modules',  './src/modules/']
+  },
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom'
   },
   module: {
     loaders: [
