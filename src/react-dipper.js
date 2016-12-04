@@ -125,7 +125,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
   if(params){
-    pJS = merge.recursive(true, pJS, params)
+    pJS = merge.recursive(true, pJS, params);
   }
 
   pJS.tmp.obj = {
