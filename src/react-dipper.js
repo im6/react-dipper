@@ -224,8 +224,7 @@ const drawCanvas = (canvas_el, params) => {
 
   /* --------- pJS functions - particles ----------- */
 
-  pJS.fn.particle = (color, opacity, position) => {
-
+  pJS.fn.particle = function(color, opacity, position) {
     /* size */
     this.radius = (pJS.particles.size.random ? Math.random() : 1) * pJS.particles.size.value;
     if(pJS.particles.size.anim.enable){
@@ -381,7 +380,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.particle.prototype.draw = ()=> {
+  pJS.fn.particle.prototype.draw = function() {
 
     let p = this,
       radius = null,
