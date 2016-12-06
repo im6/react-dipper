@@ -141,7 +141,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.retinaInit = function(){
+  pJS.fn.retinaInit = () => {
 
     if(pJS.retina_detect && window.devicePixelRatio > 1){
       pJS.canvas.pxratio = window.devicePixelRatio;
@@ -171,11 +171,11 @@ const drawCanvas = (canvas_el, params) => {
 
   /* ---------- pJS functions - canvas ------------ */
 
-  pJS.fn.canvasInit = function(){
+  pJS.fn.canvasInit = () => {
     pJS.canvas.ctx = pJS.canvas.el.getContext('2d');
   };
 
-  pJS.fn.canvasSize = function(){
+  pJS.fn.canvasSize = () => {
 
     pJS.canvas.el.width = pJS.canvas.w;
     pJS.canvas.el.height = pJS.canvas.h;
@@ -214,17 +214,17 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.canvasPaint = function(){
+  pJS.fn.canvasPaint = () => {
     pJS.canvas.ctx.fillRect(0, 0, pJS.canvas.w, pJS.canvas.h);
   };
 
-  pJS.fn.canvasClear = function(){
+  pJS.fn.canvasClear = () => {
     pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
   };
 
   /* --------- pJS functions - particles ----------- */
 
-  pJS.fn.particle = function(color, opacity, position){
+  pJS.fn.particle = (color, opacity, position) => {
 
     /* size */
     this.radius = (pJS.particles.size.random ? Math.random() : 1) * pJS.particles.size.value;
@@ -299,7 +299,7 @@ const drawCanvas = (canvas_el, params) => {
     }
 
     /* animation - velocity for speed */
-    var velbase = {}
+    var velbase = {};
     switch(pJS.particles.move.direction){
       case 'top':
         velbase = { x:0, y:-1 };
@@ -381,12 +381,12 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.particle.prototype.draw = function() {
+  pJS.fn.particle.prototype.draw = ()=> {
 
     let p = this,
       radius = null,
       opacity = null,
-      color_value = null
+      color_value = null;
 
     if(p.radius_bubble != undefined){
       radius = p.radius_bubble;
@@ -484,13 +484,13 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.particlesCreate = function(){
+  pJS.fn.particlesCreate = () => {
     for(var i = 0; i < pJS.particles.number.value; i++) {
       pJS.particles.array.push(new pJS.fn.particle(pJS.particles.color, pJS.particles.opacity.value));
     }
   };
 
-  pJS.fn.particlesUpdate = function(){
+  pJS.fn.particlesUpdate = () => {
 
     for(var i = 0; i < pJS.particles.array.length; i++){
 
@@ -621,7 +621,7 @@ const drawCanvas = (canvas_el, params) => {
 
   };
 
-  pJS.fn.particlesDraw = function(){
+  pJS.fn.particlesDraw = () => {
 
     /* clear canvas */
     pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
@@ -637,11 +637,11 @@ const drawCanvas = (canvas_el, params) => {
 
   };
 
-  pJS.fn.particlesEmpty = function(){
+  pJS.fn.particlesEmpty = () => {
     pJS.particles.array = [];
   };
 
-  pJS.fn.particlesRefresh = function(){
+  pJS.fn.particlesRefresh = () => {
 
     /* init all */
     cancelRequestAnimFrame(pJS.fn.checkAnimFrame);
@@ -660,7 +660,7 @@ const drawCanvas = (canvas_el, params) => {
 
   /* ---------- pJS functions - particles interaction ------------ */
 
-  pJS.fn.interact.linkParticles = function(p1, p2){
+  pJS.fn.interact.linkParticles = (p1, p2) => {
 
     var dx = p1.x - p2.x,
       dy = p1.y - p2.y,
@@ -691,7 +691,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.interact.attractParticles  = function(p1, p2){
+  pJS.fn.interact.attractParticles  = (p1, p2) => {
 
     /* condensed particles */
     let dx = p1.x - p2.x,
@@ -714,7 +714,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.interact.bounceParticles = function(p1, p2){
+  pJS.fn.interact.bounceParticles = (p1, p2) => {
 
     let dx = p1.x - p2.x,
       dy = p1.y - p2.y,
@@ -734,7 +734,7 @@ const drawCanvas = (canvas_el, params) => {
 
   /* ---------- pJS functions - modes events ------------ */
 
-  pJS.fn.modes.pushParticles = function(nb, pos){
+  pJS.fn.modes.pushParticles = (nb, pos) => {
 
     pJS.tmp.pushing = true;
 
@@ -760,7 +760,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.modes.removeParticles = function(nb){
+  pJS.fn.modes.removeParticles = (nb) => {
 
     pJS.particles.array.splice(0, nb);
     if(!pJS.particles.move.enable){
@@ -770,7 +770,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.modes.bubbleParticle = function(p){
+  pJS.fn.modes.bubbleParticle = (p) => {
 
     /* on hover event */
     if(pJS.interactivity.events.onhover.enable && isInArray('bubble', pJS.interactivity.events.onhover.mode)){
@@ -905,20 +905,20 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.modes.repulseParticle = function(p){
+  pJS.fn.modes.repulseParticle = (p) => {
 
     if(pJS.interactivity.events.onhover.enable && isInArray('repulse', pJS.interactivity.events.onhover.mode) && pJS.interactivity.status == 'mousemove') {
 
-      var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
+      let dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
         dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
         dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
 
-      var normVec = {x: dx_mouse/dist_mouse, y: dy_mouse/dist_mouse},
+      let normVec = {x: dx_mouse/dist_mouse, y: dy_mouse/dist_mouse},
         repulseRadius = pJS.interactivity.modes.repulse.distance,
         velocity = 100,
         repulseFactor = clamp((1/repulseRadius)*(-1*Math.pow(dist_mouse/repulseRadius,2)+1)*repulseRadius*velocity, 0, 50);
 
-      var pos = {
+      let pos = {
         x: p.x + normVec.x * repulseFactor,
         y: p.y + normVec.y * repulseFactor
       };
@@ -945,13 +945,13 @@ const drawCanvas = (canvas_el, params) => {
 
       if(pJS.tmp.repulse_clicking){
 
-        var repulseRadius = Math.pow(pJS.interactivity.modes.repulse.distance/6, 3);
+        let repulseRadius = Math.pow(pJS.interactivity.modes.repulse.distance/6, 3);
 
-        var dx = pJS.interactivity.mouse.click_pos_x - p.x,
+        let dx = pJS.interactivity.mouse.click_pos_x - p.x,
           dy = pJS.interactivity.mouse.click_pos_y - p.y,
           d = dx*dx + dy*dy;
 
-        var force = -repulseRadius / d * 1;
+        let force = -repulseRadius / d * 1;
 
         function process(){
 
@@ -963,7 +963,7 @@ const drawCanvas = (canvas_el, params) => {
             var pos = {
               x: p.x + p.vx,
               y: p.y + p.vy
-            }
+            };
             if (pos.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
             else if (pos.x - p.radius < 0) p.vx = -p.vx;
             if (pos.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
@@ -1003,7 +1003,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.modes.grabParticle = function(p){
+  pJS.fn.modes.grabParticle = (p) => {
 
     if(pJS.interactivity.events.onhover.enable && pJS.interactivity.status == 'mousemove'){
 
@@ -1038,7 +1038,7 @@ const drawCanvas = (canvas_el, params) => {
 
   /* ---------- pJS functions - vendors ------------ */
 
-  pJS.fn.vendors.eventsListeners = function(){
+  pJS.fn.vendors.eventsListeners = () => {
 
     /* events target element */
     if(pJS.interactivity.detect_on == 'window'){
@@ -1139,7 +1139,7 @@ const drawCanvas = (canvas_el, params) => {
 
   };
 
-  pJS.fn.vendors.densityAutoParticles = function(){
+  pJS.fn.vendors.densityAutoParticles = () => {
 
     if(pJS.particles.number.density.enable){
       /* calc area */
@@ -1160,7 +1160,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.checkOverlap = function(p1, position){
+  pJS.fn.vendors.checkOverlap = (p1, position) => {
     for(var i = 0; i < pJS.particles.array.length; i++){
       var p2 = pJS.particles.array[i];
 
@@ -1177,7 +1177,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.createSvgImg = function(p){
+  pJS.fn.vendors.createSvgImg = (p) => {
 
     /* set color to svg element */
     var svgXml = pJS.tmp.source_svg,
@@ -1198,7 +1198,7 @@ const drawCanvas = (canvas_el, params) => {
 
     /* create particle img obj */
     var img = new Image();
-    img.addEventListener('load', function(){
+    img.addEventListener('load', () =>{
       p.img.obj = img;
       p.img.loaded = true;
       DOMURL.revokeObjectURL(url);
@@ -1209,13 +1209,13 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.destroypJS = function(){
+  pJS.fn.vendors.destroypJS = () => {
     cancelAnimationFrame(pJS.fn.drawAnimFrame);
     canvas_el.remove();
   };
 
 
-  pJS.fn.vendors.drawShape = function(c, startX, startY, sideLength, sideCountNumerator, sideCountDenominator){
+  pJS.fn.vendors.drawShape = (c, startX, startY, sideLength, sideCountNumerator, sideCountDenominator) => {
 
     // By Programming Thomas - https://programmingthomas.wordpress.com/2013/04/03/n-sided-shapes/
     var sideCount = sideCountNumerator * sideCountDenominator;
@@ -1237,7 +1237,7 @@ const drawCanvas = (canvas_el, params) => {
 
   };
 
-  pJS.fn.vendors.exportImg = function(){
+  pJS.fn.vendors.exportImg = () => {
     window.open(pJS.canvas.el.toDataURL('image/png'), '_blank');
   };
 
@@ -1284,7 +1284,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.draw = function(){
+  pJS.fn.vendors.draw = () => {
 
     if(pJS.particles.shape.type == 'image'){
 
@@ -1320,7 +1320,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.checkBeforeDraw = function(){
+  pJS.fn.vendors.checkBeforeDraw = () => {
 
     // if shape is image
     if(pJS.particles.shape.type == 'image'){
@@ -1345,7 +1345,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.init = function(){
+  pJS.fn.vendors.init = () => {
 
     /* init canvas + particles */
     pJS.fn.retinaInit();
@@ -1361,7 +1361,7 @@ const drawCanvas = (canvas_el, params) => {
   };
 
 
-  pJS.fn.vendors.start = function(){
+  pJS.fn.vendors.start = () => {
 
     if(isInArray('image', pJS.particles.shape.type)){
       pJS.tmp.img_type = pJS.particles.shape.image.src.substr(pJS.particles.shape.image.src.length - 3);
@@ -1380,10 +1380,10 @@ const drawCanvas = (canvas_el, params) => {
   pJS.fn.vendors.eventsListeners();
 
   pJS.fn.vendors.start();
-}
+};
 
 
-const requestAnimFrame = (function(){
+const requestAnimFrame = (() => {
   return  window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame    ||
@@ -1394,7 +1394,7 @@ const requestAnimFrame = (function(){
     };
 })();
 
-const cancelRequestAnimFrame = ( function() {
+const cancelRequestAnimFrame = (() => {
   return window.cancelAnimationFrame         ||
     window.webkitCancelRequestAnimationFrame ||
     window.mozCancelRequestAnimationFrame    ||
@@ -1414,15 +1414,15 @@ const hexToRgb = (hex) => {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
   } : null;
-}
+};
 
 const clamp = (number, min, max) => {
   return Math.min(Math.max(number, min), max);
-}
+};
 
 const isInArray = (value, array) => {
   return array.indexOf(value) > -1;
-}
+};
 
 
 export default drawCanvas;

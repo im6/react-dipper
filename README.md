@@ -21,9 +21,7 @@ import ReactDipper from 'react-dipper';
 
 class App extends Component{
     render(){
-        return (
-            <ReactDipper />
-        );
+        return <ReactDipper />
     };
 
 }
@@ -56,15 +54,3 @@ Find your parameters configuration [here](http://vincentgarreau.com/particles.js
 + Create your feature branch  
 + Commit your changes and push the branch  
 + Submit a pull request
-
----
-
-## Info
-
-### Refactoring stages
-
-+ Add comprehensive props to the component.  
-+ Change params names.  
-+ Change variable and function names into more readable/understable/maintainable ones.  
-+ Update the structure of the code detaching defined functions from `this.params.fn` object.  
-+ Tests.
