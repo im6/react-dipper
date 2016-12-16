@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jinouwuque/react-dipper.git"
+    "url": "git+https://github.com/zj1926/react-dipper.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "zijian guo (ZJ)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jinouwuque/react-dipper/issues"
+    "url": "https://github.com/zj1926/react-dipper/issues"
   },
-  "homepage": "https://github.com/jinouwuque/react-dipper#readme",
+  "homepage": "https://github.com/zj1926/react-dipper#readme",
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
