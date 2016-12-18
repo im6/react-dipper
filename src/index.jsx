@@ -114,6 +114,7 @@ const defaultParticle = {
 };
 
 const defaultStyle = {
+  "display": 'flex',
   "width": "100%",
   "height": "100%",
   "backgroundColor": "#102e43"
@@ -144,7 +145,7 @@ class ReactDipper extends React.Component {
   render() {
     let me = this;
     return <canvas style={me.styleParams} ref="canvas"/>
-}
+  }
 };
 
 export default ReactDipper;
