@@ -35,7 +35,7 @@ class App extends Component{
 | particleParams | object | The parameters of the particles instance. |
 | styleParams | object | The react style json of the canvas element. |
 
-Find your parameters configuration [here](http://vincentgarreau.com/particles.js/).
+Find your `particleParams` configuration [here](http://vincentgarreau.com/particles.js/).
 
 ---
 

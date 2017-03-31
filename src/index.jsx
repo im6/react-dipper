@@ -125,27 +125,36 @@ class ReactDipper extends React.Component {
   constructor(props){
     super(props);
     let me = this;
-    me.particleParams = null;
-    me.styleParams = null;
   }
 
   componentWillMount(){
     let me = this;
+  }
 
-    me.particleParams = me.props.particleParams ? me.props.particleParams : defaultParticle;
-    me.styleParams = merge.recursive(true, defaultStyle, me.props.styleParams);
+  componentWillReceiveProps(nextProps){
+    let me = this;
+    // wondering whether it's necessary to use state here.
   }
 
   componentDidMount(){
     let me = this;
     let { canvas } = me.refs;
-    drawCanvas(canvas, me.particleParams);
+    drawCanvas(canvas, me.props.particleParams);
   }
 
   render() {
     let me = this;
-    return <canvas style={me.styleParams} ref="canvas"/>
+    return <canvas style={me.props.styleParams} ref="canvas"/>
   }
+}
+
+ReactDipper.propTypes = {
+  particleParams: PropTypes.object,
+  styleParams: PropTypes.object,
+};
+ReactDipper.defaultProps = {
+  particleParams: defaultParticle,
+  styleParams: defaultStyle,
 };
 
 export default ReactDipper;
