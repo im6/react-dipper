@@ -117,7 +117,7 @@ const defaultStyle = {
   "display": 'flex',
   "width": "100%",
   "height": "100%",
-  "backgroundColor": "#102e43"
+  "backgroundColor": "#102e43",
 };
 
 
@@ -129,6 +129,7 @@ class ReactDipper extends React.Component {
 
   componentWillMount(){
     let me = this;
+    me.style = merge(true, defaultStyle, me.props.styleParams);
   }
 
   componentWillReceiveProps(nextProps){
@@ -144,7 +145,7 @@ class ReactDipper extends React.Component {
 
   render() {
     let me = this;
-    return <canvas style={me.props.styleParams} ref="canvas"/>
+    return <canvas style={me.style} ref="canvas"/>
   }
 }
 
