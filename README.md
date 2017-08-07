@@ -9,6 +9,7 @@ Implementation in **ES2015** + **React** of [Particles.js](https://github.com/Vi
 `npm install react-dipper`
 
 ## [Demo](http://vincentgarreau.com/particles.js/)
+## [Demo2](https://codepen.io/simon_zauberware/pen/zdYmOv)
 
 ## How to use
 
